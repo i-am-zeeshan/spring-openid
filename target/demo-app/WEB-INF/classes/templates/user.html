@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Demo App</title>
+		<script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
+		<script src="webjars/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="webjars/font-awesome/5.2.0/css/all.css" />
+		<script type="text/javascript">
+			function changeLang(lang){
+				window.location=window.location.href.split('?')[0] + "?ui_locales=" + lang
+			}
+			function getQueryString(param)
+			{
+				var urlParams = new URLSearchParams(window.location.search);
+				return urlParams.get(param);
+			}
+			function getLocale()
+			{
+				var urlParams = new URLSearchParams(window.location.search);
+				var lang = urlParams.get("ui_locales");
+				if(!lang)
+				{
+					lang="en_US";
+				}
+				return lang;
+			}
+			$(document).ready(function(){
+		 		$('[data-toggle="popover"]').popover();
+			});
+		</script>
+		<style type="text/css">
+			.navbar {
+				background-color:#3b3f40;
+				min-height: 20px;
+				z-index: -1;
+			}
+			.sidenav {
+				height: 100%;
+				width: 250px;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				background-color: #008bcd;
+				overflow-x: hidden;
+				padding-top: 20px;
+				}
+			.sidenav p, .sidenav p a {
+				padding: 6px 8px 6px 16px;
+				text-decoration: none;
+				font-size: 20px;
+				color: #57c9ff;
+				display: block;
+			}
+			.sidenav p a:hover {
+				color: #57c9ff;
+			}
+			.main {
+				margin-left: 160px; /* Same as the width of the sidenav */
+				font-size: 28px; /* Increased text to enable scrolling */
+				padding: 0px 10px;
+			}
+			.sectionDark {
+				background-color: #d9e2e8;
+			}
+			@media screen and (max-height: 450px) {
+				.sidenav {padding-top: 15px;}
+				.sidenav p, .sidenav p a {font-size: 12px;}
+			}
+		</style>
+	</head>
+	<body class="sectionDark">
+		<div class="container text-center">
+			<div class="sidenav">
+				<a href="#"><img style="width:150px; height:auto; display: block; margin-left: auto; margin-right: auto;" src="https://www.wind.gr/eshop/images/windMenuResources/logo_new.png"></a>
+				<p>Language: <script>document.write(getLocale())</script></p>
+				<div class="form-group" style="margin-left: 25px; margin-right: 25px;">
+					<select onchange="changeLang(this.value)" class="form-control" id="sel1">
+						<option value="" disabled selected>Select Value</option>
+						<option value="en_US">EN</option>
+						<option value="fr_FR">FR</option>
+						<option value="el_GR">GR</option>
+					</select>
+				</div>
+			</div>
+			<div class="navbar fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+					</div>
+					<div class="navbar-nav">
+						<a class="nav-item" href="#" style="color:#ffffff" data-toggle="popover" title="Token information" data-html="true" th:attr="data-content='<code>'+${userInfoMap}+'</code>'">
+							<span class="fa fa-user"></span>[[${name}]]</a>
+						<a class="nav-item" href="logout" style="color: #ffffff"><span class="fa fa-sign-out"></span> Logout</a>
+					</div>
+				</div>
+			</div>
+			<div style="margin-top:100px">
+				<h1 th:text="'Welcome ' + ${name}">Welcome</h1>
+				<h2 th:text="${userInfoMap}">UserInfo JWT</h2>
+				<h2 th:text="${tokenType} + ${tokenValue}">Token Value</h2>
+			</div>
+		</div>
+	</body>
+</html>

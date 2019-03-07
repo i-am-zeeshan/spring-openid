@@ -1,0 +1,22 @@
+# Sample OAuth2 spring boot app
+Demo app that authenticates its users against an OAuth2 provider. It uses Spring Boot and Spring Security OAuth2 on the back end.
+
+## Requirement
+- Create an OAuth2 App. The redirect uri must end with /login 
+
+## Configure
+All configuration for this app is located in application.properties. Locate and configure the following parameters:
+- client-id
+- client-secret
+- scope
+- authorization-endpoint-uri
+- token-endpoint-uri
+- userinfo-endpoint-uri
+
+## Compile and deploy
+mvn clean package
+
+## Run as spring boot app
+mvn spring-boot:run
+
+

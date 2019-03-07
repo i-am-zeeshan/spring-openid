@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<title>Logout</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="https://icrypto-cdn.s3.amazonaws.com/js/jquery-1.9.1.min.js"></script>
+		<script src="https://app3-oidc-stage.icrypto.com/demo-app/webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://app3-oidc-stage.icrypto.com/demo-app/webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+		<script type="text/javascript">
+			function changeLang(lang){
+				window.location=window.location.href.split('?')[0] + "?ui_locales=" + lang
+			}
+			function getQueryString(param){
+				var urlParams = new URLSearchParams(window.location.search);
+				return urlParams.get(param);
+			}
+			function getLocale(){
+				var urlParams = new URLSearchParams(window.location.search);
+				var lang = urlParams.get("ui_locales");
+				if(!lang)
+				{
+					lang="en_US";
+				}
+				return lang;
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="https://app3-oidc-stage.icrypto.com/demo-app/webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+		<style type="text/css">
+			.navbar {
+				background-color:#3b3f40;
+				min-height: 20px;
+				z-index: -1;
+			}
+			.sidenav {
+				height: 100%;
+				width: 250px;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				background-color: #008bcd;
+				overflow-x: hidden;
+				padding-top: 20px;
+			}
+			.sidenav p, .sidenav p a {
+				padding: 6px 8px 6px 16px;
+				text-decoration: none;
+				font-size: 20px;
+				color: #57c9ff;
+				display: block;
+			}
+			.sidenav p a:hover {
+				color: #57c9ff;
+			}
+			.main {
+				margin-left: 160px; /* Same as the width of the sidenav */
+				font-size: 28px; /* Increased text to enable scrolling */
+				padding: 0px 10px;
+			}
+			@media screen and (max-height: 450px) {
+				.sidenav {padding-top: 15px;}
+				.sidenav p, .sidenav p a {font-size: 12px;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="navbar fixed-top">
+			<div class="container-fluid">
+				<div id="collapsibleNavbar" class="toggled collapse show" style="">
+<div class="sidenav">
+			<a href="#"><img style="width:150px; height:auto; display: block; margin-left: auto; margin-right: auto;" src="https://www.wind.gr/eshop/images/windMenuResources/logo_new.png"></a>
+			<p>Language: <script>document.write(getLocale())</script>
+			</p><div class="form-group" style="margin-left: 25px; margin-right: 25px;">
+				<select onchange="changeLang(this.value)" class="form-control" id="sel1">
+						<option value="" disabled="" selected="">Select Value</option>
+						<option value="en_US">EN</option>
+						<option value="fr_FR">FR</option>
+						<option value="el_GR">GR</option>
+				</select>
+			</div>	
+		</div>
+            		</div>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="true">
+    
+  <span class="icon-bar">Toggle Sidebar</span>  
+  </button>
+					<a style="max-width:100px; margin-left: 50px; color: #ffffff; font-size: 14px" class="navbar-brand" rel="home" href="#" title="iCrypto">FREE SHIPPING</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top:200px">
+			<div class="col-md-3 mx-auto">You Have Successfully Logged Out</div>
+		</div>	
+	</body>	
+</html>
